@@ -1,6 +1,6 @@
 ﻿namespace Parcial1Ap1_AnthonySP
 {
-    partial class Form1
+    partial class FormPrincipal
     {
         /// <summary>
         /// Required designer variable.
