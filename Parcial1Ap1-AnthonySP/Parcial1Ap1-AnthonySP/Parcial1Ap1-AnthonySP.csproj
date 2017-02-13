@@ -72,7 +72,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataBase\" />
+    <Folder Include="BLL\" />
+    <Folder Include="DAL\" />
+    <Folder Include="Ui\Consultas\" />
+    <Folder Include="Ui\Registros\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataBase\Script.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
