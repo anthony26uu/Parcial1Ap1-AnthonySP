@@ -1,1 +1,1 @@
-﻿
+﻿create table Empleados( EmpleadoId int identity (1,1) primary key, Nombre varchar (70), FechaNacimiento DateTime , Sueldo varchar(70)  )

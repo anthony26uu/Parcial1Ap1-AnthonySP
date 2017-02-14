@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parcial1Ap1_AnthonySP.Ui.Registros;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,12 @@ namespace Parcial1Ap1_AnthonySP
         public FormPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void empleadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RegistroEmpleadoForm db = new RegistroEmpleadoForm();
+            db.Show();
         }
     }
 }
