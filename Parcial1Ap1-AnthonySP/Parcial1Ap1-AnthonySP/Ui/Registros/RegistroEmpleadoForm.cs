@@ -31,30 +31,28 @@ namespace Parcial1Ap1_AnthonySP.Ui.Registros
             nombreTextBox.Focus();
         }
 
-        private void buttonNuevo_Click(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
-
         private bool Validar()
         {
-            bool retorno = false;
+            bool retorno = true;
             if (string.IsNullOrWhiteSpace(nombreTextBox.Text))
             {
                 errorProviderNombre.SetError(nombreTextBox, "El Campo esta vacio");
-                retorno = true;
+                retorno = false;
             }
 
             if (string.IsNullOrWhiteSpace(sueldoTextBox.Text))
             {
                 errorProviderSueldo.SetError(sueldoTextBox, "El campo esta vacio");
-                retorno = true;
+                retorno = false;
             }
-
-
-
             return retorno;
         }
+
+        private void buttonNuevo_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
@@ -73,7 +71,7 @@ namespace Parcial1Ap1_AnthonySP.Ui.Registros
                 MessageBox.Show("La Empleado se guardo con exito.");
             }
 
-            Limpiar();
+         //   Limpiar();
 
 
         }

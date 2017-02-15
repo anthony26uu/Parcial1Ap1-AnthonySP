@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Parcial1Ap1_AnthonySP.BLL
 {
-  public class EmpleadoBLL
+    public class EmpleadoBLL
     {
 
         public static bool Guardar(Empleados empleado)
@@ -38,10 +38,10 @@ namespace Parcial1Ap1_AnthonySP.BLL
                     throw;
                 }
             }
-          
+
         }
 
-       
+
 
 
         public static bool Eliminar(Empleados n)
@@ -52,7 +52,7 @@ namespace Parcial1Ap1_AnthonySP.BLL
             {
                 try
                 {
-                    conec.Entry( n).State = EntityState.Deleted;
+                    conec.Entry(n).State = EntityState.Deleted;
                     conec.SaveChanges();
                     interruptor = true;
                 }
@@ -78,7 +78,7 @@ namespace Parcial1Ap1_AnthonySP.BLL
                 }
                 catch (Exception)
                 {
-                
+
                     throw;
                 }
             }
@@ -87,9 +87,9 @@ namespace Parcial1Ap1_AnthonySP.BLL
         }
 
 
-       
 
-           
+
+
         public static List<Empleados> GetList(DateTime Nacimiento)
         {
             var list = new List<Empleados>();
@@ -98,7 +98,7 @@ namespace Parcial1Ap1_AnthonySP.BLL
             {
                 try
                 {
-                    list = conec.empleado.Where(p => p.FechaNacimiento== Nacimiento).ToList();
+                    list = conec.empleado.Where(p => p.FechaNacimiento == Nacimiento).ToList();
                 }
                 catch (Exception)
                 {
