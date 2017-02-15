@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parcial1Ap1_AnthonySP.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,9 +17,61 @@ namespace Parcial1Ap1_AnthonySP.Ui.Consultas
             InitializeComponent();
         }
 
+
+
         private void ConsultaEmpleado_Load(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = BLL.EmpleadoBLL.GetList();
+            Llenar();
+        }
+
+
+
+        public void Llenar()
+        {
+            //  comboBox1.Items.Insert(3, "Nombre1");
+            comboBox1.Items.Insert(0, "NOMBRE");
+            comboBox1.Items.Insert(1, "FECHA");
+            comboBox1.Items.Insert(2, "TODO");
+
+            //Si Colocas DiplayMember arriba no funcoina
+            comboBox1.DataSource = comboBox1.Items;
+            comboBox1.DisplayMember = "Nombre";
+
+
+        }
+
+        public void Selecionar()
+        {
+            using (var db = new BLL.Repositorio<Empleados>())
+            {
+                if (comboBox1.SelectedIndex == 0)
+                {
+                    dataGridViewNombre.DataSource = db.GetListNombre(p => p.Nombre == buscaText.Text);
+                }
+
+                if (comboBox1.SelectedIndex == 1)
+                {
+                    if (desdeDateTimePicker.Value.Date <= HastadateTimePicker1.Value.Date)
+                    {
+                        dataGridViewNombre.DataSource = db.GetListFecha(p => p.FechaNacimiento >= desdeDateTimePicker.Value.Date && p.FechaNacimiento <= HastadateTimePicker1.Value.Date);
+                    }
+                }
+                if (comboBox1.SelectedIndex == 2)
+                {
+                    dataGridViewNombre.DataSource = db.GetList();
+                }
+            }
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Selecionar();
+        }
+
+        private void buscaText_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

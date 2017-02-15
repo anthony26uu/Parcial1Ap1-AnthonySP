@@ -68,7 +68,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\EmpleadoBLL.cs" />
+    <Compile Include="BLL\Repositorio.cs" />
+    <Compile Include="BLL\RepositorioBLL.cs" />
+    <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\Parcial1Aplicada1Db.cs" />
     <Compile Include="Entidades\Empleados.cs" />
     <Compile Include="FormPrincipal.cs">

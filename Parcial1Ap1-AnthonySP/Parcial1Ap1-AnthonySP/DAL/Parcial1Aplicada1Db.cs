@@ -10,13 +10,10 @@ namespace Parcial1Ap1_AnthonySP.DAL
     class Parcial1Aplicada1Db : DbContext
 
     {
-        public Parcial1Aplicada1Db(): base ("ConStr")
+        public Parcial1Aplicada1Db() : base("ConStr")
         {
 
         }
-
         public DbSet<Empleados> empleado { get; set; }
-
-
     }
 }

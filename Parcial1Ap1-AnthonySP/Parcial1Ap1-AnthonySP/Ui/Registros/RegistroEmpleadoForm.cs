@@ -66,48 +66,56 @@ namespace Parcial1Ap1_AnthonySP.Ui.Registros
             {
                 MessageBox.Show("Por favor llenar los campos");
             }
-            else if (BLL.EmpleadoBLL.Guardar(guardar))
+            else if (BLL.RepositorioBLL.Guardar(guardar))
             {
                 MessageBox.Show("La Empleado se guardo con exito.");
             }
 
-         //   Limpiar();
+            Limpiar();
 
 
         }
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-          
-            var buscar = BLL.EmpleadoBLL.Buscar(Utilidades.TOINT(empleadoIdTextBox.Text));
-            
-            if (buscar != null)
+            int id = int.Parse(empleadoIdTextBox.Text);
+            Empleados empleado;
+            using (var db = new BLL.Repositorio<Empleados>())
             {
-                nombreTextBox.Text = buscar.Nombre;
-                sueldoTextBox.Text = buscar.Sueldo;
-                fechaNacimientoDateTimePicker.Text = buscar.FechaNacimiento.ToString();
-                MessageBox.Show("Este es el Empleado");
+                empleado = db.Buscar(p => p.EmpleadoId == id);
+
+                if (empleado != null)
+                {
+                    nombreTextBox.Text = empleado.Nombre;
+                    sueldoTextBox.Text = empleado.Sueldo;
+                    fechaNacimientoDateTimePicker.Text = empleado.FechaNacimiento.ToString();
+                    MessageBox.Show("Este es el Empleado");
+                }
+                else
+                {
+                    MessageBox.Show("No existe ningun Empleado con ese Id.");
+                }
             }
-            else
-            {
-                MessageBox.Show("No existe ningun Empleado con ese Id.");
-            }
-}
+        }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            var eliminar = BLL.EmpleadoBLL.Buscar(Utilidades.TOINT(empleadoIdTextBox.Text));
+            //   var eliminar = BLL..Buscar(Utilidades.TOINT(empleadoIdTextBox.Text));
+            int id = int.Parse(empleadoIdTextBox.Text);
+            using (var db = new BLL.Repositorio<Empleados>())
+            {
+                if (db.Eliminar(db.Buscar(p => p.EmpleadoId == id)))
+                {
 
-            if (eliminar != null)
-            {
-                BLL.EmpleadoBLL.Eliminar(eliminar);
-                MessageBox.Show("Empleado eliminado con exito.");
-                Limpiar();
+                    MessageBox.Show("Empleado eliminado con exito.");
+                    Limpiar();
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo eliminar  Empleado.");
+                }
             }
-            else
-            {
-                MessageBox.Show("No se pudo eliminar  Empleado.");
-            }
+
         }
     }
 }
