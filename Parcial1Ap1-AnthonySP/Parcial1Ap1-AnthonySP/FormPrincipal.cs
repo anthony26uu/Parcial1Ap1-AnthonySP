@@ -29,5 +29,10 @@ namespace Parcial1Ap1_AnthonySP
             ConsultaEmpleado db = new ConsultaEmpleado();
             db.Show();
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
